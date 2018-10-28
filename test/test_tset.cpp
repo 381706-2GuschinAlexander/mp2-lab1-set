@@ -295,3 +295,8 @@ TEST(TSet, check_negation_operator)
 
   EXPECT_EQ(expSet, set1);
 }
+
+TEST(Tset, MYTEST)
+{
+	EXPECT_EQ(1, 1);
+}
