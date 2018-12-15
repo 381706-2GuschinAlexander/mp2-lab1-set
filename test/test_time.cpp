@@ -26,19 +26,3 @@ TEST(TBitFieldTime, or_with_300_mil)
 {
 	ASSERT_NO_THROW(A3 | B3);
 }
-
-//		~
-TEST(TBitFieldTime, neg_with_100_mil)
-{
-	ASSERT_NO_THROW(~A1);
-}
-
-TEST(TBitFieldTime, neg_with_200_mil)
-{
-	ASSERT_NO_THROW(~A2);
-}
-
-TEST(TBitFieldTime, neg_with_300_mil)
-{
-	ASSERT_NO_THROW(~A3);
-}
