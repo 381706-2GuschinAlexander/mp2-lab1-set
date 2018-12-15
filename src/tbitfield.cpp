@@ -5,7 +5,7 @@
 //
 // Битовое поле
 
-#include "exception.h"
+
 #include "tbitfield.h"
 
 TBitField::TBitField(int len)
@@ -19,7 +19,7 @@ TBitField::TBitField(int len)
 			pMem[i] = 0;
 	}
 	else
-		ExThrow(0);
+		throw(__NEG_SIZE);
 }
 
 TBitField::TBitField(const TBitField &bf) // конструктор копирования
@@ -39,7 +39,7 @@ TBitField::~TBitField()
 int TBitField::GetMemIndex(const int n) const // индекс Мем для бита n
 { 
 	if (n > BitLen || n < 0)
-		ExThrow(1);
+		throw(__IND_IS_OUT_OF_RANGE);
 
 	return n / (8 * sizeof(TELEM));
 
@@ -48,7 +48,7 @@ int TBitField::GetMemIndex(const int n) const // индекс Мем для би
 TELEM TBitField::GetMemMask(const int n) const // битовая маска для бита n
 {
 	if (n > BitLen || n < 0)
-		ExThrow(1);
+		throw(__IND_IS_OUT_OF_RANGE);
 
 	int shift = n % (8 * sizeof(TELEM));
 	return 1 << shift;
@@ -64,7 +64,7 @@ int TBitField::GetLength(void) const // получить длину (к-во б�
 void TBitField::SetBit(const int n) // установить бит
 {
 	if (n > BitLen || n < 0)
-		ExThrow(1);
+		throw(__IND_IS_OUT_OF_RANGE);
 
 	pMem[GetMemIndex(n)] = pMem[GetMemIndex(n)] | GetMemMask(n);
 }
@@ -72,7 +72,7 @@ void TBitField::SetBit(const int n) // установить бит
 void TBitField::ClrBit(const int n) // очистить бит
 {
 	if (n > BitLen || n < 0)
-		ExThrow(1);
+		throw(__IND_IS_OUT_OF_RANGE);
 
 	pMem[GetMemIndex(n)] = pMem[GetMemIndex(n)] & ~GetMemMask(n);
 }
@@ -80,7 +80,7 @@ void TBitField::ClrBit(const int n) // очистить бит
 int TBitField::GetBit(const int n) const // получить значение бита
 {
 	if (n > BitLen || n < 0)
-		ExThrow(1);
+		throw(__IND_IS_OUT_OF_RANGE);
 
 	return ((GetMemMask(n) & pMem[GetMemIndex(n)]) == GetMemMask(n) ? 1 : 0);
 }

@@ -1,14 +1,5 @@
-#pragma once
+#ifndef EXP
 
-void ExThrow(int a)
-{
-	switch (a)
-	{
-	case 0:
-		throw("Negative lenght/size");
-	case 1:
-		throw("Index is out of range");
-	default:
-		throw("Undocumeted throw");
-	}
-}
+#define __NEG_SIZE "Negative lenght/size"
+#define __IND_IS_OUT_OF_RANGE "Index is out of range"
+#endif // !EXP
