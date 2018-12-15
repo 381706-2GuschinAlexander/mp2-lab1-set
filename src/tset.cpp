@@ -6,13 +6,14 @@
 // Множество - реализация через битовые поля
 
 #include "tset.h"
+#include "exception.h"
 
 TSet::TSet(int mp) : BitField(mp)
 {
 	if (mp > 0)
 		MaxPower = mp;
 	else
-		throw (1);
+		ExThrow(0);
 }
 
 // конструктор копирования
@@ -109,10 +110,30 @@ TSet TSet::operator~(void) // дополнение
 
 istream &operator>>(istream &istr, TSet &s) // ввод
 {
+	int temp;
+	char sym;
+	do{
+		istr >> sym;
+	} while (sym != '{');
+
+	do {
+		istr >> temp;
+		s.InsElem(temp);
+		do {
+			istr >> sym;
+		} while (sym != ',' && sym != '}');
+
+	} while (sym != '}');
+
 	return istr;
 }
 
 ostream& operator<<(ostream &ostr, const TSet &s) // вывод
 {
+	int i, n;
+	char sym = ' ';
+	ostr << '{';
+	n = s.GetMaxPower();
+	for(i = 0; i < n; i++)
 	return ostr;
 }
