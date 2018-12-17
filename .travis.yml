@@ -8,6 +8,7 @@ before_script:
 script:
   - cmake ../mp2-lab1-set
   - make -j
-  - ./bin/test_set
+  - cd ./bin/
+  - ./test_set
 notifications:
   email: false
