@@ -151,6 +151,26 @@ TEST(TBitField, compare_equal_bitfields_of_equal_size)
   EXPECT_EQ(bf1, bf2);
 }
 
+TEST(TBitField, compare_not_equal_bitfields_of_equal_size)
+{
+  const int size = 2;
+  TBitField bf1(size), bf2(size);
+  for (int i = 0; i < size; i++)
+  {
+    bf1.SetBit(i);
+  }
+  bf2 = bf1;
+  bf2.ClrBit(0);
+  EXPECT_NE(bf1, bf2);
+}
+
+TEST(TBitField, compare_not_equal_bitfields_of_not_equal_size)
+{
+  TBitField bf1(1), bf2(2);
+  
+  EXPECT_NE(bf1, bf2);
+}
+
 TEST(TBitField, or_operator_applied_to_bitfields_of_equal_size)
 {
   const int size = 4;
