@@ -109,30 +109,12 @@ TSet TSet::operator~(void) // дополнение
 
 istream &operator>>(istream &istr, TSet &s) // ввод
 {
-	int temp;
-	char sym;
-	do{
-		istr >> sym;
-	} while (sym != '{');
-
-	do {
-		istr >> temp;
-		s.InsElem(temp);
-		do {
-			istr >> sym;
-    } while (sym != ',' && sym != '}');
-
-	} while (sym != '}');
-
-	return istr;
+  istr >> s.bitField;
+  return istr;
 }
 
 ostream& operator<<(ostream &ostr, const TSet &s) // вывод
 {
-	int i, n;
-	char sym = ' ';
-	ostr << '{';
-	n = s.GetMaxPower();
-	for(i = 0; i < n; i++)
-	return ostr;
+  ostr << s.bitField;
+  return ostr;
 }

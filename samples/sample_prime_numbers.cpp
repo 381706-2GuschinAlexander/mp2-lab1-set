@@ -50,7 +50,16 @@ int main()
   cout << endl;
   cout << "В первых " << n << " числах " << count << " простых" << endl;
 
-  cout << "Битовое поле s" <<s;
+  cout << "Активировать дополнительный тест y/n ?" << endl;
+  char c;
+  cin >> c;
+  if (c == 'y')
+  {
+    TBitField A(10);
+    cout << "Введите битовое поле" << endl;
+    cin >> A;
+    cout << "Вывод" << A << endl;
+  }
 }
 #else
 
@@ -91,6 +100,20 @@ int main()
     }
   cout << endl;
   cout << "В первых " << n << " числах " << count << " простых" << endl;
+
+  cout << "Активировать дополнительный тест y/n ?" << endl;
+  char c;
+  cin >> c;
+  if (c == 'y')
+  {
+    TSet A(10);
+    cout << "Введите битовое поле" << endl;
+    cin >> A;
+    cout << "Вывод" << A << endl;
+  }
 }
 
 #endif
+
+
+

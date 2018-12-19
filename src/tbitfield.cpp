@@ -164,33 +164,26 @@ TBitField TBitField::operator~(void) // отрицание
 
 istream &operator>>(istream &istr, TBitField &bf) // ввод
 {
-	int i = 0;
-	char sym;
-	do
-	{
-		istr >> sym;
-	} while (sym != ' ');
-	while (1)
-	{
-		if (sym == '0')
-			bf.ClrBit(i++);
-		else if (sym == '1')
-			bf.SetBit(i++);
-		else
-			break;
-	}
-	return istr;
+  char sym;
+  for (int i = 0; i < bf.bitLen; i++)
+  {
+    istr >> sym;
+    if (sym == '0')
+      bf.ClrBit(i);
+    else if (sym == '1')
+      bf.SetBit(i);
+    else break;
+  }
+
+  return istr;
 }
 
 ostream &operator<<(ostream &ostr, const TBitField &bf) // вывод
 {
 	
-	for (int i = 0; i < bf.bitLen; i++)
-	{
-		if (bf.GetBit(i) == 1)
-			ostr << '1';
-		else
-			ostr << '0';
-	}
-	return ostr;
+  for (int i = 0; i < bf.bitLen; i++)
+    cout << bf.GetBit(i);
+  cout << endl;
+
+  return ostr;
 }
